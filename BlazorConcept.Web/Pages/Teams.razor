@@ -1,0 +1,40 @@
+﻿@page "/teams"
+@inherits TeamsBase
+
+<h1 class="page-title">Teams</h1>
+
+@if (Teams == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Logo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var team in Teams)
+            {
+            <tr>
+                <td>@team.Name</td>
+                <td><img src=@team.LogoFullPath class="rounded-circle" style="width:100px;height:100px;max-width: 100%; height: auto;"/></td>
+                <td>
+                    <a href="@($"teamedit/{team.Id}")" class="btn btn-warning table-btn">Edit</a>
+                    <a href="@($"teamdetail/{team.Id}")" class="btn btn-info table-btn">Details</a>
+                    <a href="@($"teamdelete/{team.Id}")" class="btn btn-danger table-btn">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@*<button @onclick="@QuickAddEmployee" class="btn btn-dark table-btn quick-add-btn">&nbsp;&nbsp;+&nbsp;&nbsp;</button>
+
+<AddEmployeeDialog @ref="AddEmployeeDialog" CloseEventCallback="@AddEmployeeDialog_OnDialogClose"></AddEmployeeDialog>*@
