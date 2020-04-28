@@ -1,4 +1,5 @@
 using BlazorConcept.Api.Data;
+using BlazorConcept.Api.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,7 @@ namespace BlazorConcept.Api
                 cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddScoped<ITeamRepository, TeamRepository>();
             services.AddControllers();
         }
 
